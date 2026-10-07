@@ -31,6 +31,7 @@ running = True
 x, y = WIDTH // 2, HEIGHT // 2
 frame = 0
 dir_x = 0
+face_dir = 1
 
 while running:
     clear_canvas()
@@ -39,6 +40,10 @@ while running:
     update_canvas()
     handle_events()
     frame = (frame + 1) % 8
+    if dir_x > 0:
+        face_dir = 1
+    elif dir_x < 0:
+        face_dir = -1
     x += dir_x * 5
     delay(0.07)
 
