@@ -32,6 +32,30 @@ def handle_events():
                 dir_y += 1
 
 
+def update():
+    global x, y, frame, face_dir
+    frame = (frame + 1) % 8
+    if dir_x > 0:
+        face_dir = 1
+    elif dir_x < 0:
+        face_dir = -1
+    x += dir_x * SPEED
+    y += dir_y * SPEED
+    x = clamp(50, x, WIDTH - 50)
+    y = clamp(50, y, HEIGHT - 50)
+
+
+def draw():
+    clear_canvas()
+    tuk_ground.draw(WIDTH // 2, HEIGHT // 2)
+    if dir_x != 0 or dir_y != 0:
+        action = 1 if face_dir == 1 else 0
+    else:
+        action = 3 if face_dir == 1 else 2
+    character.clip_draw(frame * 100, action * 100, 100, 100, x, y)
+    update_canvas()
+
+
 open_canvas(WIDTH, HEIGHT)
 tuk_ground = load_image('TUK_GROUND.png')
 character = load_image('animation_sheet.png')
@@ -44,24 +68,9 @@ dir_y = 0
 face_dir = 1
 
 while running:
-    clear_canvas()
-    tuk_ground.draw(WIDTH // 2, HEIGHT // 2)
-    if dir_x != 0 or dir_y != 0:
-        action = 1 if face_dir == 1 else 0
-    else:
-        action = 3 if face_dir == 1 else 2
-    character.clip_draw(frame * 100, action * 100, 100, 100, x, y)
-    update_canvas()
+    draw()
     handle_events()
-    frame = (frame + 1) % 8
-    if dir_x > 0:
-        face_dir = 1
-    elif dir_x < 0:
-        face_dir = -1
-    x += dir_x * SPEED
-    y += dir_y * SPEED
-    x = clamp(50, x, WIDTH - 50)
-    y = clamp(50, y, HEIGHT - 50)
+    update()
     delay(0.07)
 
 close_canvas()
