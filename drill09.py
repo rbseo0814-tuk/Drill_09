@@ -1,7 +1,7 @@
 from pico2d import *
 
 WIDTH, HEIGHT = 1280, 1024
-SPEED = 5
+SPEED = 8
 
 
 def handle_events():
