@@ -45,7 +45,7 @@ face_dir = 1
 while running:
     clear_canvas()
     tuk_ground.draw(WIDTH // 2, HEIGHT // 2)
-    if dir_x != 0:
+    if dir_x != 0 or dir_y != 0:
         action = 1 if face_dir == 1 else 0
     else:
         action = 3 if face_dir == 1 else 2
