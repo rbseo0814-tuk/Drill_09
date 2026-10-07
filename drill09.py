@@ -4,7 +4,7 @@ WIDTH, HEIGHT = 1280, 1024
 
 
 def handle_events():
-    global running
+    global running, dir_x
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -12,6 +12,11 @@ def handle_events():
         elif event.type == SDL_KEYDOWN:
             if event.key == SDLK_ESCAPE:
                 running = False
+            elif event.key == SDLK_RIGHT:
+                dir_x += 1
+        elif event.type == SDL_KEYUP:
+            if event.key == SDLK_RIGHT:
+                dir_x -= 1
 
 
 open_canvas(WIDTH, HEIGHT)
@@ -21,6 +26,7 @@ character = load_image('animation_sheet.png')
 running = True
 x, y = WIDTH // 2, HEIGHT // 2
 frame = 0
+dir_x = 0
 
 while running:
     clear_canvas()
