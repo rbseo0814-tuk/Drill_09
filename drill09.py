@@ -1,6 +1,7 @@
 from pico2d import *
 
 WIDTH, HEIGHT = 1280, 1024
+SPEED = 5
 
 
 def handle_events():
@@ -57,8 +58,8 @@ while running:
         face_dir = 1
     elif dir_x < 0:
         face_dir = -1
-    x += dir_x * 5
-    y += dir_y * 5
+    x += dir_x * SPEED
+    y += dir_y * SPEED
     x = clamp(50, x, WIDTH - 50)
     y = clamp(50, y, HEIGHT - 50)
     delay(0.07)
