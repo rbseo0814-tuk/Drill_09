@@ -60,6 +60,7 @@ while running:
     x += dir_x * 5
     y += dir_y * 5
     x = clamp(50, x, WIDTH - 50)
+    y = clamp(50, y, HEIGHT - 50)
     delay(0.07)
 
 close_canvas()
