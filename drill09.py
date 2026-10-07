@@ -58,6 +58,7 @@ while running:
     elif dir_x < 0:
         face_dir = -1
     x += dir_x * 5
+    y += dir_y * 5
     delay(0.07)
 
 close_canvas()
