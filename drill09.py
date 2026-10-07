@@ -68,9 +68,9 @@ dir_y = 0
 face_dir = 1
 
 while running:
-    draw()
     handle_events()
     update()
+    draw()
     delay(0.07)
 
 close_canvas()
