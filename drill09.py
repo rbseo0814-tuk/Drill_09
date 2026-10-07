@@ -59,6 +59,7 @@ while running:
         face_dir = -1
     x += dir_x * 5
     y += dir_y * 5
+    x = clamp(50, x, WIDTH - 50)
     delay(0.07)
 
 close_canvas()
