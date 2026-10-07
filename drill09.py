@@ -37,9 +37,9 @@ while running:
     clear_canvas()
     tuk_ground.draw(WIDTH // 2, HEIGHT // 2)
     if dir_x != 0:
-        action = 1
+        action = 1 if face_dir == 1 else 0
     else:
-        action = 3
+        action = 3 if face_dir == 1 else 2
     character.clip_draw(frame * 100, action * 100, 100, 100, x, y)
     update_canvas()
     handle_events()
